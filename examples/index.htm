@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Easyjs</title>
+
+    <meta charset="utf-8">
+
+    <script src="js/lib/Three/three-r55-mini.js"></script>
+    <script src="js/lib/Three/TrackBallControls.js"></script>
+
+    <script src="js/lib/Utils/EventDispatcher.js"></script>
+    <script src='js/lib/Utils/WebGLPanel.js'></script>
+    <script src="../src/Easy.js"></script>
+    <script src="js/Utils/MultiArray.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+<div id="masterViewport" class="xor viewport">
+
+    <div id="threeViewport" class="xor viewport">
+
+        <canvas id="threeDView" class="xor threePanel">
+
+        </canvas>
+
+    </div>
+
+    <div id="playTab" class="xor sliderTab menu">
+        <p>
+            <em>
+                <strong>
+                    Play
+                </strong>
+            </em>
+        </p>
+    </div>
+
+    <div id="pauseTab" class="xor sliderTab menu">
+        <p>
+            <em>
+                <strong>
+                    Pause
+                </strong>
+            </em>
+        </p>
+    </div>
+
+
+
+    <div id="gitHubTab" class="xor sliderTab">
+        <a href="https://github.com/0xor1/Sassy" target="_blank">
+            <p>
+                <em>
+                    <strong>
+                        GitHub
+                    </strong>
+                </em>
+            </p>
+        </a>
+    </div>
+
+</div>
+
+</body>
+
+</html>
