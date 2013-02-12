@@ -241,7 +241,7 @@ situations like user input.
         obj:myObj.position,
         prop:'z',
         target:100,
-        length:5000         //animate over 5 seconds
+        len:5000         //animate over 5 seconds
     });
 
     setTimeout(
@@ -250,7 +250,7 @@ situations like user input.
                 obj:myObj.position,
                 prop:'z',
                 target:0,
-                length:2500
+                len:2500
             });
         },
         2500                //automatically override the previous animation halfway through
@@ -355,6 +355,7 @@ any calculations, this is the host animation all of the rest are parasite animat
                 obj:arrayOfObjects[i].position,
                 prop:'z',
                 end:100,
+                len:1000,
                 ease:tmpEaseFn
             });
             tmpEaseFn = paraEaseFn;
@@ -401,6 +402,7 @@ Very similar in effect to parasite animations, only inversely implemented:
             obj:arrayOfObjects[0].position,
             prop:'z',
             end:100,
+            len:1000,
             ease:easeFn
         });
     }
