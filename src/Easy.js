@@ -66,8 +66,8 @@
             , prop = param.prop
             , start = obj[prop]
             , end = param.end
-            , length = (typeof param.length === 'undefined' || param.length === 0) ? 1 : param.length
-            , inverseLength = 1 / length
+            , len = (typeof param.len === 'undefined' || param.len === 0) ? 1 : param.len
+            , inverseLen = 1 / len
             , progress = 0
             , clbk = param.clbk
             , dcc = (start - end) * 0.5  //defaultConstCoefficient
@@ -108,7 +108,7 @@
 
 
             var thisTime = Date.now();
-            progress += (thisTime - lastTime) * inverseLength * scalingFactor;
+            progress += (thisTime - lastTime) * inverseLen * scalingFactor;
             lastTime = thisTime;
 
 
@@ -119,7 +119,7 @@
                 if (clbk instanceof Function) {
                     setTimeout(
                         function () {
-                            clbk(obj, prop, start, end, length, ease);
+                            clbk(obj, prop, start, end, len, ease);
                         },
                         0
                     );
