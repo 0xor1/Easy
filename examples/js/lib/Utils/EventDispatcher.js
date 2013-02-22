@@ -2,59 +2,63 @@
  * @author mrdoob / http://mrdoob.com/
  * @author 0xor1    http://0xor1.com/
  */
-(function () {
+(function (NS) {
 
-    window.Utils = window.Utils || {};
+    var ns = window[NS] = window[NS] || {};
 
-    Utils.EventDispatcher = function () {
+    ns.EventDispatcher = function () {
 
-        var listeners = {};
+        this._listeners = {};
+        
+    }
+    
+    ns.EventDispatcher.prototype = {
 
-        this.addEventListener = function (type, listener) {
+        addEventListener: function (type, listener) {
 
-            if (listeners[ type ] === undefined) {
+            if (this._listeners[ type ] === undefined) {
 
-                listeners[ type ] = [];
+                this._listeners[ type ] = [];
 
             }
 
-            if (listeners[ type ].indexOf(listener) === -1) {
+            if (this._listeners[ type ].indexOf(listener) === -1) {
 
-                listeners[ type ].push(listener);
+                this._listeners[ type ].push(listener);
 
-                if (listeners[ type ].isDispatching) {
+                if (this._listeners[ type ].isDispatching) {
 
-                    listeners[ type ].numListenersAdded++;
+                    this._listeners[ type ].numListenersAdded++;
 
                 }
 
             }
 
-        };
+        },
 
-        this.removeEventListener = function (type, listener) {
+        removeEventListener: function (type, listener) {
 
-            var index = listeners[ type ].indexOf(listener);
+            var index = this._listeners[ type ].indexOf(listener);
 
             if (index !== -1) {
 
-                if (listeners[ type ].isDispatching) {
+                if (this._listeners[ type ].isDispatching) {
 
-                    listeners[ type ].dispatchQueueUpdated = true;
+                    this._listeners[ type ].dispatchQueueUpdated = true;
 
-                    listeners[ type ].removedIndexes.push(index);
+                    this._listeners[ type ].removedIndexes.push(index);
 
                 }
 
-                listeners[ type ].splice(index, 1);
+                this._listeners[ type ].splice(index, 1);
 
             }
 
-        };
+        },
 
-        this.dispatchEvent = function (event) {
+        dispatchEvent: function (event) {
 
-            var listenerArray = listeners[ event.type ];
+            var listenerArray = this._listeners[ event.type ];
 
             if (listenerArray !== undefined) {
 
@@ -118,9 +122,9 @@
 
             }
 
-        };
+        }
 
     };
 
 
-})();
+})('Utils');
