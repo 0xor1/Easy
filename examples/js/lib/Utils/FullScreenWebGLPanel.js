@@ -5,30 +5,7 @@
 (function () {
 
 
-    //must be loaded after THREE.js
-    var tmpObj3D = THREE.Object3D
-        , tmpObj3DProto = THREE.Object3D.prototype
-        ;
-
-    //make Object3D an event dispatcher
-    THREE.Object3D = function () {
-
-        THREE.EventDispatcher.call(this);
-
-        this._interactableIdx = null;
-
-        tmpObj3D.call(this);
-
-    };
-
-
-    THREE.Object3D.prototype = tmpObj3DProto;
-
-
-
-
     THREE.FullScreenWebGLPanel = function (dom) {
-
 
         var isRendering = false
             , shouldBeRendering = false
