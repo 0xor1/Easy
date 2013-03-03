@@ -7,7 +7,7 @@
  */
 
 
-Object.prototype.addEventListener = Object.prototype.addEventListener || function (type, listener) {
+Object.prototype.addEventListener = function (type, listener) {
 
     var listeners = this._eventListeners = this._eventListeners || {};
 
@@ -28,7 +28,7 @@ Object.prototype.addEventListener = Object.prototype.addEventListener || functio
 };
 
 
-Object.prototype.removeEventListener = Object.prototype.removeEventListener || function (type, listener) {
+Object.prototype.removeEventListener = function (type, listener) {
 
     var listeners = this._eventListeners
         , index
@@ -57,7 +57,7 @@ Object.prototype.removeEventListener = Object.prototype.removeEventListener || f
 };
 
 
-Object.prototype.dispatchEvent = Object.prototype.dispatchEvent || function (event) {
+Object.prototype.dispatchEvent = function (event) {
 
     if (typeof this._eventListeners === 'undefined') {
         return;
