@@ -4,12 +4,13 @@
 
 (function () {
 
-
+    var interactableIdx = 0;
+    
     THREE.FullScreenWebGLPanel = function (dom) {
 
         var isRendering = false
             , shouldBeRendering = false
-            , interactors = []
+            , interactors = {}
             , resizeTimer = null
             , lastTimeMouseMoved = 0
             , blankObj = {dispatchEvent:function(){}}
@@ -156,9 +157,9 @@
 
             if (obj._interactableIdx === null) {
 
-                obj._interactableIdx = interactors.length;
+                obj._interactableIdx = interactableIdx++;
 
-                interactors.push(obj);
+                interactors[obj._interactableIdx] = obj;
 
             }
 
@@ -169,11 +170,11 @@
 
         this.makeUninteractable = function (obj) {
 
-            if (obj._interactableIdx !== null_) {
+            if (obj._interactableIdx !== null) {
 
-                interactors.splice(obj._interactableIdx, 1);
-
-                obj._interactableIdx = null;
+                delete interactors[obj._interactableIdx];
+                
+                delete obj._interactableIdx;
 
             }
 
